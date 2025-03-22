@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Crush</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .logo h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+        .nav-links li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .nav-links li a:hover {
+            color: #008000;
+        }
+        .nav-buttons button {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .login {
+            background: #ddd;
+            color: #333;
+        }
+        .login:hover {
+            background: #ccc;
+        }
+        .book-demo {
+            background: #008000;
+            color: white;
+        }
+        .book-demo:hover {
+            background: #006400;
+        }
+        .hero {
+            background: url('world.avif') center/cover no-repeat;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        .hero-content {
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 1s ease-in-out;
+        }
+        .info {
+            text-align: center;
+            padding: 50px;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .card img {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+        }
+        .card h3 {
+            font-size: 18px;
+            color: #008000;
+            margin: 5px 0;
+        }
+        .card p {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.5;
+        }
+        .service-info {
+            margin-top: 20px;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            display: none;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-direction: row-reverse;
+        }
+        .service-info img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+        }
+        .service-info a {
+            color: #008000;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .service-info a:hover {
+            text-decoration: underline;
+        }
+        .services {
+            text-align: center;
+            padding: 50px;
+            background: white;
+        }
+        .service-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        .service-buttons button {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+            background: #008000;
+            color: white;
+            transition: background 0.3s;
+        }
+        .service-buttons button:hover {
+            background: #006400;
+        }
+        .service-info {
+            margin-top: 20px;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            display: none;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+        }
+        .service-info img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+        }
+        .service-info a {
+            color: #008000;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .service-info a:hover {
+            text-decoration: underline;
+        }
+        .service-info {
+            margin-top: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            display: none;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-direction: row-reverse;
+        }
+        .service-info img {
+            width: 150px;
+            height: auto;
+            border-radius: 10px;
+        }
+        .service-info a {
+            color: #008000;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .service-info a:hover {
+            text-decoration: underline;
+        }
+        .service-info {
+            margin-top: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            display: none;
+            align-items: center;
+            gap: 20px;
+            flex-direction: row-reverse;
+            height: 300px;
+        }
+        .service-info img {
+            width: 50%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .service-info a {
+            color: #008000;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .service-info a:hover {
+            text-decoration: underline;
+        }
+        .service-info {
+            margin-top: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-direction: row-reverse;
+           
+        }
+        .service-info div {
+            width: 50%;
+            height: 100%;
+        }
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            /* background: white; */
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            margin-bottom: 7%;
+        }
+        .form-section {
+            flex: 1;
+        }
+        h2 {
+            color: #008000;
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 10px 0 5px;
+            color: #333;
+        }
+        select, input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-bottom: 2px solid #008000;
+            background: transparent;
+            outline: none;
+            font-size: 16px;
+        }
+        .calculate-btn {
+            background: #008000;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+            margin-top: 15px;
+            width: 100%;
+        }
+        .calculate-btn:hover {
+            background: #006400;
+        }
+        .image-section img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+        }
+        .form-section label,
+.form-section input,
+.form-section select {
+    display: block;
+    margin-bottom: 10px; 
+}
+
+.calculate-btn {
+    margin-top: 10px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+@media (max-width: 992px) {
+            nav {
+                padding: 15px 30px;
+            }
+            .nav-links {
+                gap: 15px;
+            }
+            .nav-buttons button {
+                padding: 8px 12px;
+            }
+            .hero {
+                height: 300px;
+            }
+            .info {
+                padding: 30px;
+            }
+            .service-info {
+                flex-direction: column-reverse; /* Stack image and text */
+                text-align: center;
+            }
+            .service-info img {
+                width: 80%;
+                margin-bottom: 15px;
+            }
+            .service-info div {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 20px;
+            }
+            .logo {
+                margin-bottom: 10px;
+            }
+            .nav-links {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+            .nav-buttons {
+                display: flex;
+                gap: 10px;
+            }
+            .hero {
+                height: 250px;
+            }
+            .hero-content h1 {
+                font-size: 2em;
+            }
+            .hero-content p {
+                font-size: 1em;
+            }
+            .cards {
+                grid-template-columns: 1fr;
+            }
+            .wrapper {
+                padding: 10px;
+            }
+            .container {
+                padding: 20px;
+            }
+            .image-section img {
+                max-width: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .nav-buttons {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 5px;
+            }
+            .nav-buttons button {
+                width: 100%;
+            }
+            .hero {
+                height: 200px;
+            }
+            .hero-content h1 {
+                font-size: 1.5em;
+            }
+            .hero-content p {
+                font-size: 0.9em;
+            }
+            .container {
+                gap: 20px;
+            }
+            .image-section img {
+                max-width: 200px;
+            }
+            .service-info{
+                margin-top: 90%;
+            }
+            
+    nav {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .nav-links-container {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .menu-icon {
+        display: block;
+    }
+    .nav-links {
+        display: none; 
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+        margin-top: 10px;
+        width: 100%;
+    }
+    .nav-links.active {
+        display: flex; 
+    }
+    .nav-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+    }
+    .nav-buttons button {
+        width: 100%;
+    }
+    .hero {
+        height: 200px;
+    }
+    .hero-content h1 {
+        font-size: 1.5em;
+    }
+    .hero-content p {
+        font-size: 0.9em;
+    }
+    .container {
+        gap: 20px;
+    }
+    .image-section img {
+        max-width: 200px;
+    }
+
+        }
+    
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h2>CarbonCrunch</h2>
+            </div>
+            <div class="nav-links-container">
+                <div class="menu-icon" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-buttons">
+                <button class="login">Login</button>
+                <button class="book-demo">Book Demo</button>
+            </div>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <div class="hero-content">
+            <h1>GHG Accounting <br> Scope 1, Scope 2, Scope 3</h1>
+            <p>Track, minimize, offset, and report your carbon emissions effortlessly.</p>
+        </div>
+    </section>
+    
+    <section class="info">
+        <h2>Leading Sustainability with CarbonCrunch</h2>
+        <p>GHG (Greenhouse Gas) Accounting is a framework used to measure and report greenhouse gas emissions.</p>
+        <div class="cards">
+            <div class="card">
+                <i class="fa-sharp-duotone fa-solid fa-cubes"></i>
+                <h3>Regulatory Compliance and Reporting</h3>
+                <p>Governments and regulatory bodies worldwide are implementing stricter climate policies and carbon reporting requirements.</p>
+            </div>
+            <div class="card">
+                <i class="fa-sharp-duotone fa-solid fa-cubes"></i>
+                <h3>Meeting Sustainability Goals</h3>
+                <p>Support companies in achieving sustainability goals by measuring and optimizing greenhouse gas emissions.</p>
+            </div>
+            <div class="card">
+                <i class="fa-sharp-duotone fa-solid fa-cubes"></i>
+                <h3>Cost Savings and Efficiency</h3>
+                <p>Reduce operational costs by optimizing energy use and implementing efficient carbon management strategies.</p>
+            </div>
+            <div class="card">
+                <i class="fa-sharp-duotone fa-solid fa-cubes"></i>
+                <h3>Investor and Consumer Expectations</h3>
+                <p>Meet growing expectations from investors and customers by showcasing transparency in sustainability efforts.</p>
+            </div>
+            <div class="card">
+                <i class="fa-sharp-duotone fa-solid fa-cubes"></i>
+                <h3>Climate Risk Management</h3>
+                <p>Identify, assess, and mitigate climate-related risks to ensure long-term business resilience.</p>
+            </div>
+            <div class="card">
+                <i class="fa-sharp-duotone fa-solid fa-cubes"></i>
+                <h3>Strengthening Brand Reputation</h3>
+                <p>Enhance brand reputation by demonstrating commitment to sustainability and responsible business practices.</p>
+            </div>
+        </div>
+    </section>
+    <section class="services">
+        <h2>Our Services</h2>
+        <div class="service-buttons">
+            <button onclick="showInfo('ghg')">GHG Accounting</button>
+            <button onclick="showInfo('scope')">Scope 1 & Scope 2 Analysis</button>
+            <button onclick="showInfo('inventory')">GHG Inventory Management</button>
+            <button onclick="showInfo('supplier')">Supplier ESG Management</button>
+            <button onclick="showInfo('brsr')">BRSR Core Value Chain Disclosure</button>
+        </div>
+        <div id="service-info" class="service-info" style="display: flex;">
+            <img src='./dashboard.webp' alt='GHG Accounting'>
+            <div>
+                <h2>GHG Accounting</h2>
+                <br>GHG accounting is the process of measuring and reporting an organization's greenhouse gas emissions across three categories: Scope 1, Scope 2, and Scope 3.
+                It involves collecting activity data, calculating emissions using standardized factors, and reporting the results to guide sustainability strategies and comply with frameworks like the GHG Protocol.
+                This process helps organizations track their carbon footprint and set reduction targets.
+                <br><br><a href='#'>Explore the service →</a>
+            </div>
+        </div>
+       
+    </section>
+    <div class="wrapper">
+        <div class="container">
+            <div class="form-section">
+                <h2 style="margin-left: 40%;width: 100%;height: auto;">Carbon Risk Calculator</h2>
+                <label for="industry">Industry Sector *</label>
+                <select id="industry">
+                    <option>Select Industry</option>
+                    <option>Manufacturing</option>
+                    <option>Technology</option>
+                    <option>Transportation</option>
+                </select>
+
+                <label for="employees">Number of Employees *</label>
+                <input type="number" id="employees" placeholder="Enter number of employees" style="margin-bottom: 10px;">
+
+                <label for="days">Operational Days per Year *</label>
+                <input type="number" id="days" placeholder="Enter operational days" style="margin-bottom: 10px;">
+
+                <label for="location">Location *</label>
+                <select id="location">
+                    <option>Select Location</option>
+                    <option>USA</option>
+                    <option>India</option>
+                    <option>Europe</option>
+                </select>
+
+                <button class="calculate-btn">Calculate</button>
+            </div>
+            <div class="image-section">
+                <img src="calculator.webp" style="height:300px;margin-bottom:-20%;" alt="Carbon Emissions ">
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const heroContent = document.querySelector(".hero-content");
+            setTimeout(() => {
+                heroContent.style.opacity = "1";
+                heroContent.style.transform = "translateY(0)";
+            }, 500);
+        });
+        function showInfo(service) {
+            const info = {
+                ghg: `<img src='./dashboard.webp' alt='GHG Accounting'>
+                <div>
+                      <h2>GHG Accounting</h2>
+                      <br>GHG accounting is the process of measuring and reporting an organization's greenhouse gas emissions across three categories: Scope 1, Scope 2, and Scope 3.
+                      It involves collecting activity data, calculating emissions using standardized factors, and reporting the results to guide sustainability strategies and comply with frameworks like the GHG Protocol.
+                      This process helps organizations track their carbon footprint and set reduction targets.
+                      <br><br><a href='#'>Explore the service →</a>
+                      </div>
+                      `,
+                scope: `<img src='./dashboard.webp' alt='Scope Analysis'>
+                <div>
+                        <h2>Scope 1 and Scope 2 Analysis</h2>
+                        <br>Scope 1 and Scope 2 emissions analysis is crucial for organizations aiming to manage their carbon footprint. Scope 1 refers to direct emissions from sources that are owned or controlled by the company, such as emissions from on-site fuel combustion in boilers, furnaces, and vehicles. Scope 2 covers indirect emissions from the generation of purchased electricity, steam, heating, or cooling consumed by the organization.
+                        <br><br><a href='#'>Explore the service →</a>
+                        </div>
+                        `,
+                inventory: `<img src='./dashboard.webp' alt='Inventory Management'>
+                  <div>
+                        <h2>GHG Inventory Management</h2>
+                        <br>Greenhouse Gas (GHG) Inventory Management is the process of quantifying, tracking, and reporting the greenhouse gas emissions of an organization or country. The primary objective is to understand and reduce the organization's carbon footprint by identifying the sources and quantities of GHG emissions. Additionally, many organizations use their GHG inventory to set emissions reduction targets and track progress over time.
+                        <br><br><a href='#'>Explore the service →</a>
+                        </div>
+                        `,
+                supplier: `<img src='./dashboard.webp' alt='Supplier ESG'>
+                <div>
+                        <h2>Supplier ESG Management</h2>
+                        <br>Supplier ESG management involves evaluating and managing the sustainability practices of a company's suppliers to ensure that they align with the organization's own ESG goals. This process focuses on assessing suppliers impact on the environment, social responsibility and governance standards
+                        <br><br><a href='#'>Explore the service →</a>
+                        </div>
+                        `,
+                brsr: ` <img src='./dashboard.webp' alt='BRSR Disclosure'>
+                <div>
+                        <h2>BRSR Core Value Chain Disclosure</h2>
+                        <br>This is a framework introduced by the Securities and Exchange Board of India (SEBI) for listed companies to disclose information about their sustainability and business responsibility practices. BRSR aims to enhance transparency and promote sustainable development by requiring companies to provide detailed reports on their Environmental, Social, and Governance (ESG) activities
+                        <br><br><a href='#'>Explore the service →</a>
+                        </div>
+                       `
+            };
+            document.getElementById("service-info").innerHTML = info[service];
+            document.getElementById("service-info").style.display = "flex";
+        }
+        document.querySelector(".calculate-btn").addEventListener("click", function() {
+    const industry = document.getElementById("industry").value;
+    const employees = document.getElementById("employees").value;
+    const days = document.getElementById("days").value;
+    const location = document.getElementById("location").value;
+
+    if (industry === "Select Industry" || location === "Select Location" || !employees || !days) {
+        alert("Please fill out all fields.");
+        return;
+    }
+
+    const carbonRisk = (parseInt(employees) * parseInt(days)) / 1000;
+    alert(`Estimated Carbon Risk: ${carbonRisk.toFixed(2)} metric tons`);
+});
+function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.classList.toggle('active');
+    }
+
+    </script>
+</body>
+</html>
